@@ -28,6 +28,9 @@ def isValid(t):
 		return False
 	if t.timestamp < 500:
 		return False
+	myText = t.text
+	if len(myText) < 20 or len(myText.split(' ')) < 4:
+		return False
 	return True
 
 # tw = Tweet('blala', 'hello my tweet', 'phili', 234567567)
