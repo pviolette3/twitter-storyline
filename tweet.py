@@ -19,7 +19,7 @@ def saveNewTweets(newTweets):
 
 def insertArticles(Ts):
 	for t in Ts:
-		db.qdoc.update({'guid': t['guid']}, {'$set': t}, upsert=True) # if the GUID is already in the set
+		db.tweet.update({'guid': t['guid']}, {'$set': t}, upsert=True) # if the GUID is already in the set
 
 def saveNewArticlesFile(newArticles):
 	with open("DB_ex.txt", "a") as f:
@@ -32,10 +32,15 @@ def saveNewArticlesFile(newArticles):
 def isValid(t):
 	if t.guid == '':
 		return False
-	if t.title == '':
+	if t.text == '':
 		return False
 	if t.author == '':
 		return False
 	if t.timestamp < 500:
 		return False
 	return True
+
+
+tw = Tweet('blala', 'hello my tweet', 'phili', 234567567)
+
+saveNewTweets([tw])
